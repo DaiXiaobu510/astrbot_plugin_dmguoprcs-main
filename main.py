@@ -45,7 +45,7 @@ class SignPlugin(Star):
                 yield event.plain_result(f"获取cookie失败: {cookie}")
                 return
             
-            logger.info(f"成功获取cookie: {cookie[:50]}...")
+            logger.info(f"成功获取cookie: {cookie}...")
             
             # 2. 发送签到请求
             logger.info(f"正在为QQ {qq} 发送签到请求...")

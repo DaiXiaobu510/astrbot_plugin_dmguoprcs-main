@@ -6,7 +6,7 @@ from typing import Dict, Any, List
 class SignData:
     """签到数据处理类"""
     
-    def __init__(self, api_url: str, cookie_expire_minutes: int = 1440):
+    def __init__(self, api_url: str, cookie_expire_minutes: int = 30):
         self.api_url = api_url.rstrip('/')
         self.cookie_expire_minutes = cookie_expire_minutes
     
