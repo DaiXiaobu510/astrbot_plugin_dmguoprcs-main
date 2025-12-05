@@ -9,7 +9,7 @@ from .data import SignData
     desc="/签到 WordPress 子比q群签到插件！配合WordPress子比签到插件使用",
     version="v1.1.6",
     author="呆小布",
-    repo="https://github.com/diwang23/astrbot_plugin_sign-main",
+    repo="https://github.com/diwang23/astrbot_plugin_dmguoprcs-main",
 )
 class SignPlugin(Star):
     def __init__(self, context: Context, config: AstrBotConfig):
