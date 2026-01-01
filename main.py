@@ -24,7 +24,7 @@ class SignPlugin(Star):
         logger.info(f"成功获取token:{self.api_key}")
         cookie_expire = self.config.get('cookie_expire_minutes', 30)
         logger.info(f"成功获取cookie过期时间: {cookie_expire} 分钟")
-        self.data_handler = SignData(api_url, cookie_expire ,self.api_key)
+        self.data_handler = SignData(api_url, cookie_expire)
     
     @filter.command("签到")
     async def sign_command(self, event: AstrMessageEvent):
