@@ -4,6 +4,7 @@ from astrbot.api import logger
 from astrbot.api import AstrBotConfig
 import astrbot.api.message_components as Comp
 from .data import SignData
+
 @register(
     name="astrbot_plugin_dmguoprcs-main",
     desc="/签到 WordPress 子比q群签到插件！配合WordPress子比签到插件使用",
@@ -20,8 +21,10 @@ class SignPlugin(Star):
         # 初始化数据处理类
         api_url = self.config.get('api_url', 'https://dmguo.cn')
         logger.info(f"成功获取API地址: {api_url}")
-        self.api_key = self.config.get('api_key','XOvHGTSYP2uRoc4')
-        logger.info(f"成功获取token:{self.api_key}")
+        
+        self.api_key = self.config.get('api_key', 'XOvHGTSYP2uRoc4')
+        logger.info(f"成功获取token: {self.api_key}")
+        
         cookie_expire = self.config.get('cookie_expire_minutes', 30)
         logger.info(f"成功获取cookie过期时间: {cookie_expire} 分钟")
         self.data_handler = SignData(api_url, cookie_expire)
@@ -37,11 +40,11 @@ class SignPlugin(Star):
                 return
             
             # 显示正在签到
-            #yield event.plain_result(f"正在为 QQ: {qq} 执行签到操作...")
+            # yield event.plain_result(f"正在为 QQ: {qq} 执行签到操作...")
             
             # 1. 获取cookie
             logger.info(f"正在为QQ {qq} 获取cookie...")
-            cookie = await self.data_handler.get_cookie(qq ,self.api_key)
+            cookie = await self.data_handler.get_cookie(qq, self.api_key)
             
             if cookie in ["用户不存在", "请求异常"]:
                 yield event.plain_result(f"获取cookie失败: {cookie}")
@@ -52,6 +55,7 @@ class SignPlugin(Star):
             # 2. 发送签到请求
             logger.info(f"正在为QQ {qq} 发送签到请求...")
             result = await self.data_handler.post_sign(cookie)
+            
             # 3. 格式化并返回结果
             formatted_result = self.data_handler.format_sign_result(result, qq)
             
@@ -99,7 +103,7 @@ class SignPlugin(Star):
         
         API地址: {self.config.get('api_url', '未设置')}
         Cookie有效期: {self.config.get('cookie_expire_minutes', 30)} 分钟
-        token:{self.config.get('api_url', '未设置')}
+        Token: {self.config.get('api_key', '未设置')}
         插件版本: 1.0.0
         运行状态: ✅ 正常
         """
