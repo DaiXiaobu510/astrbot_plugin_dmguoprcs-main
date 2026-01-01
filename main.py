@@ -8,9 +8,9 @@ from .data import SignData
 @register(
     name="astrbot_plugin_dmguoprcs-main",
     desc="/签到 WordPress 子比q群签到插件！配合WordPress子比签到插件使用",
-    version="v1.1.7",
+    version="v1.1.8",
     author="呆小布",
-    repo="https://github.com/diwang23/astrbot_plugin_dmguoprcs-main",
+    repo="https://github.com/DaiXiaobu510/astrbot_plugin_dmguoprcs-main",
 )
 class SignPlugin(Star):
     def __init__(self, context: Context, config: AstrBotConfig):
